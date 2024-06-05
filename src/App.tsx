@@ -1,8 +1,16 @@
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Layout from '@/pages/Layout.tsx';
+import Posts from '@/pages/Posts.tsx';
+
 function App() {
   return (
-    <>
-      <div>App</div>
-    </>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/posts" element={<Posts />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }
 
