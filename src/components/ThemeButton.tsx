@@ -6,7 +6,7 @@ import { RiMacLine } from 'react-icons/ri';
 import { useSystemIsDarkMode } from '@/hooks/useSystemIsDarkMode.tsx';
 
 const ThemeButton = () => {
-  const { theme, setTheme } = useThemeContext();
+  const { styles, theme, setTheme } = useThemeContext();
   const isDarkTheme = theme === ThemeType.Dark;
   const isSystemTheme = theme === ThemeType.System;
   const systemIsDarkMode = useSystemIsDarkMode();
@@ -59,7 +59,7 @@ const ThemeButton = () => {
       {isMenuVisible && (
         <div
           ref={menuRef}
-          className={`absolute top-10 flex flex-col gap-3 rounded w-36 justify-center ${isDarkTheme ? 'bg-gray' : 'bg-yellow-50'}`}
+          className={`absolute top-10 right-0 py-2 flex flex-col gap-3 rounded w-36 justify-center shadow-sm shadow-gray ${styles}`}
         >
           <Button onClick={() => setTheme(ThemeType.Light)} color={'light'}>
             <MdOutlineLightMode /> Light
@@ -86,7 +86,8 @@ const Button = ({
   const { theme } = useThemeContext();
   return (
     <div
-      className={`flex rounded items-center gap-2 p-3 ${color === theme ? 'text-red-500 cursor-default' : 'cursor-pointer'}`}
+      className={`flex items-center gap-2 p-1
+       ${color === theme ? 'text-red-500 cursor-default' : 'cursor-pointer'}`}
       onClick={onClick}
     >
       {children}

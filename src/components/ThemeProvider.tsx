@@ -28,14 +28,15 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
         : ThemeType.Light
       : (defaultTheme as ThemeType);
   const [theme, setTheme] = useState(initialTheme);
-  const styles =
+  const styles: string =
     theme === ThemeType.Dark
       ? 'bg-dark text-dark-t'
       : theme === ThemeType.Light
-        ? 'bg-light text-dark'
-        : 'dark:bg-dark dark:text-dark-t bg-light text-dark';
+        ? 'bg-white text-dark'
+        : 'dark:bg-dark dark:text-dark-t bg-white text-dark';
   useEffect(() => {
     localStorage.setItem('theme', String(theme));
+    document.body.classList.add(...styles.split(' '));
   }, [theme]);
 
   return (
