@@ -4,9 +4,7 @@ import HeaderMenu from '@/components/HeaderMenu.tsx';
 import { Link, Outlet } from 'react-router-dom';
 
 const Layout = () => {
-  const { theme } = useContext(ThemeContext);
-  const isDarkTheme = theme === 'dark';
-  const styles = isDarkTheme ? 'bg-dark text-dark-t' : 'bg-light text-dark';
+  const { styles } = useContext(ThemeContext);
 
   return (
     <div className="h-[100vh]">

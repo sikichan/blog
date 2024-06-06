@@ -15,4 +15,4 @@ const createMediaQueryHook = (query: string) => {
     return useSyncExternalStore(subscribe, getSnapshot);
   };
 };
-export const useIsDarkMode = createMediaQueryHook('(prefers-color-scheme: dark)');
+export const useSystemIsDarkMode = createMediaQueryHook('(prefers-color-scheme: dark)');
