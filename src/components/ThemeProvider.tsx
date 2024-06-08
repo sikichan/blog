@@ -1,4 +1,3 @@
-import { useSystemIsDarkMode } from '@/hooks/useSystemIsDarkMode.tsx';
 import React, { createContext, PropsWithChildren, useEffect, useState } from 'react';
 
 export enum ThemeType {
@@ -19,15 +18,8 @@ export const ThemeContext = createContext<ThemeProviderProps>({
   styles: '',
 });
 const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const systemIsDarkMode = useSystemIsDarkMode();
   const defaultTheme = (localStorage.getItem('theme') as ThemeType) || 'system';
-  const initialTheme =
-    defaultTheme === ThemeType.System
-      ? systemIsDarkMode
-        ? ThemeType.Dark
-        : ThemeType.Light
-      : (defaultTheme as ThemeType);
-  const [theme, setTheme] = useState(initialTheme);
+  const [theme, setTheme] = useState(defaultTheme);
   const styles: string =
     theme === ThemeType.Dark
       ? 'bg-dark text-dark-t'

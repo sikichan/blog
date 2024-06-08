@@ -1,18 +1,6 @@
-import { useSyncExternalStore } from 'react';
+import useMediaQuery from '@/hooks/useMediaQuery.tsx';
 
-const createMediaQueryHook = (query: string) => {
-  return function useMediaQuery() {
-    function subscribe(cb: () => void) {
-      const queryList = window.matchMedia(query);
-      queryList.addEventListener('change', cb);
-      return () => queryList.removeEventListener('change', cb);
-    }
-
-    function getSnapshot() {
-      return window.matchMedia(query).matches;
-    }
-
-    return useSyncExternalStore(subscribe, getSnapshot);
-  };
+const useSystemIsDarkMode = () => {
+  return useMediaQuery('(prefers-color-scheme: dark)');
 };
-export const useSystemIsDarkMode = createMediaQueryHook('(prefers-color-scheme: dark)');
+export default useSystemIsDarkMode;

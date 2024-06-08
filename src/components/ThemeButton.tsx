@@ -3,7 +3,7 @@ import { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'rea
 import useThemeContext from '@/hooks/useThemeContext.tsx';
 import { ThemeType } from '@/components/ThemeProvider.tsx';
 import { RiMacLine } from 'react-icons/ri';
-import { useSystemIsDarkMode } from '@/hooks/useSystemIsDarkMode.tsx';
+import useSystemIsDarkMode from '@/hooks/useSystemIsDarkMode.tsx';
 
 const ThemeButton = () => {
   const { styles, theme, setTheme } = useThemeContext();
