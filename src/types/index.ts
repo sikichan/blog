@@ -6,6 +6,8 @@ export interface IArticle {
   labels: ILabel[];
   created_at: string;
   updated_at: string;
+  body: string;
+  number: number;
 }
 
 export interface ILabel {

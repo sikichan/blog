@@ -8,7 +8,7 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-[100vh] items-center">
-      <header className={`font-serif flex justify-between px-6 items-center w-full p-4 ${styles}`}>
+      <header className={`font-bold flex justify-between px-6 items-center w-full p-4 ${styles}`}>
         <Link className="text-3xl" to={'/'}>
           Siki Chan
         </Link>
