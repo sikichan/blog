@@ -1,18 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import { IArticle } from '@/types';
 import { getIssueById } from '@/apis';
+import MarkdownPreview from '@uiw/react-markdown-preview';
+import { useParams } from 'react-router-dom';
 
-const Article = ({ id }: { id: number }) => {
-  const { data, error, isLoading } = useQuery<IArticle | null>({
+const Article = () => {
+  const params = useParams();
+  if (!params.id) return <div>not found</div>;
+  const id = parseInt(params.id!);
+  const { data, isLoading } = useQuery<IArticle | null>({
     queryKey: ['article', id],
     queryFn: () => getIssueById(id),
   });
+
   if (isLoading) {
     return <span>Loading...</span>;
-  }
-
-  if (error) {
-    return <span>Error: {(error as Error).message}</span>;
   }
 
   if (!data) {
@@ -20,9 +22,15 @@ const Article = ({ id }: { id: number }) => {
   }
 
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <p>{data.body}</p>
+    <div className="mx-auto lg:w-2/3 md:w-full">
+      <h1 className="mb-4 text-md font-bold">{data.title}</h1>
+      <MarkdownPreview
+        source={data.body}
+        wrapperElement={{
+          'data-color-mode': 'dark',
+        }}
+        style={{ padding: '8px', borderRadius: '6px', overflowX: 'scroll', flex: 1 }}
+      />
     </div>
   );
 };

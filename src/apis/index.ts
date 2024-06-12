@@ -1,7 +1,14 @@
 import { IArticle } from '@/types';
 
 export const getIssues = async () => {
-  const res = await fetch('https://api.github.com/repos/sikichan/blog/issues');
+  const res = await fetch(
+    `https://api.github.com/repos/sikichan/blog/issues?page=1&per_page=10&creator=sikichan`,
+    {
+      headers: {
+        Authorization: `token ${import.meta.env.VITE_BLOG_TOKEN}`,
+      },
+    },
+  );
   const data: IArticle[] = await res.json();
   return data;
 };

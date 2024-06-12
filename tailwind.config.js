@@ -4,15 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: '#24243f',
-        light: '#b2c7ee',
+        dark: '#212126',
+        light: '#e0e0e5',
         'dark-t': '#e3e3c0',
         purple: '#4A55A2',
         gray: '#b5bfc9',
         'gray-200': '#c2c2c4',
+        'gray-300': '#626161',
+        'gray-400': '#383838',
       },
       scale: {
-        5: '1.005',
+        15: '1.015',
       },
     },
   },

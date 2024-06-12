@@ -37,7 +37,7 @@ const ThemeButton = () => {
   }, [theme]);
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <div
         className={`rounded-full cursor-pointer transition ease-linear duration-400
        hover:shadow-lg hover:shadow-indigo-500/50`}
@@ -59,7 +59,8 @@ const ThemeButton = () => {
       {isMenuVisible && (
         <div
           ref={menuRef}
-          className={`absolute top-10 right-0 py-2 flex flex-col gap-3 rounded w-36 justify-center shadow-sm shadow-gray ${styles}`}
+          className={`absolute font-normal z-999 top-10 right-0 p-2 flex flex-col gap-3 rounded w-36 justify-center shadow-sm shadow-gray ${styles} 
+          `}
         >
           <Button onClick={() => setTheme(ThemeType.Light)} color={'light'}>
             <MdOutlineLightMode /> Light
@@ -86,8 +87,8 @@ const Button = ({
   const { theme } = useThemeContext();
   return (
     <div
-      className={`flex items-center gap-2 p-1
-       ${color === theme ? 'text-red-500 cursor-default' : 'cursor-pointer'}`}
+      className={`flex items-center gap-2 p-1 hover:rounded
+       ${color === theme ? 'text-red-500 cursor-default' : 'cursor-pointer dark:hover:bg-gray-200'}`}
       onClick={onClick}
     >
       {children}
